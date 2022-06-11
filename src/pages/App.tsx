@@ -2,7 +2,7 @@ import { CharacterCardListing } from "../components/CharacterCardListing";
 import { Pagination } from "../components/Pagination";
 import React from "react";
 import { Box, Container, Flex, Heading } from "@chakra-ui/react";
-import "./App.scss";
+import "./Character.scss";
 
 function App() {
     return (

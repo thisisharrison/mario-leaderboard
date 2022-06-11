@@ -1,0 +1,242 @@
+
+.character-avatar {
+    display: inline-block;
+    background: url("../assets/sprite/characters.png");
+    width: 100px;
+    height: 100px;
+}
+span[id="Mario"] {
+    background-position: 0 0;
+}
+    span[id="Donkey Kong"] {
+    background-position: -125px 0;
+}
+    span[id="Link"] {
+    background-position: -250px 0;
+}
+    span[id="Samus"] {
+    background-position: -375px 0;
+}
+    span[id="Dark Samus"] {
+    background-position: -500px 0;
+}
+    span[id="Yoshi"] {
+    background-position: -625px 0;
+}
+    span[id="Kirby"] {
+    background-position: -750px 0;
+}
+    span[id="Fox"] {
+    background-position: -875px 0;
+}
+    span[id="Pikachu"] {
+    background-position: -1000px 0;
+}
+    span[id="Luigi"] {
+    background-position: 0 -125px;
+}
+    span[id="Ness"] {
+    background-position: -125px -125px;
+}
+    span[id="Captain Falcon"] {
+    background-position: -250px -125px;
+}
+    span[id="Jigglypuff"] {
+    background-position: -375px -125px;
+}
+    span[id="Peach"] {
+    background-position: -500px -125px;
+}
+    span[id="Daisy"] {
+    background-position: -625px -125px;
+}
+    span[id="Bowser"] {
+    background-position: -750px -125px;
+}
+    span[id="Ice Climbers"] {
+    background-position: -875px -125px;
+}
+    span[id="Sheik"] {
+    background-position: -1000px -125px;
+}
+    span[id="Zelda"] {
+    background-position: 0 -250px;
+}
+    span[id="Dr. Mario"] {
+    background-position: -125px -250px;
+}
+    span[id="Pichu"] {
+    background-position: -250px -250px;
+}
+    span[id="Falco"] {
+    background-position: -375px -250px;
+}
+    span[id="Marth"] {
+    background-position: -500px -250px;
+}
+    span[id="Lucina"] {
+    background-position: -625px -250px;
+}
+    span[id="Young Link"] {
+    background-position: -750px -250px;
+}
+    span[id="Ganondorf"] {
+    background-position: -875px -250px;
+}
+    span[id="Mewtwo"] {
+    background-position: -1000px -250px;
+}
+    span[id="Roy"] {
+    background-position: 0 -375px;
+}
+    span[id="Chrom"] {
+    background-position: -125px -375px;
+}
+    span[id="Mr. Game and Watch"] {
+    background-position: -250px -375px;
+}
+    span[id="Meta Knight"] {
+    background-position: -375px -375px;
+}
+    span[id="Pit"] {
+    background-position: -500px -375px;
+}
+    span[id="Dark Pit"] {
+    background-position: -625px -375px;
+}
+    span[id="Zero Suit Samus"] {
+    background-position: -750px -375px;
+}
+    span[id="Wario"] {
+    background-position: -875px -375px;
+}
+    span[id="Snake"] {
+    background-position: -1000px -375px;
+}
+    span[id="Ike"] {
+    background-position: 0 -500px;
+}
+    span[id="Pokémon Trainer"] {
+    background-position: -125px -500px;
+}
+    span[id="Diddy Kong"] {
+    background-position: -250px -500px;
+}
+    span[id="Lucas"] {
+    background-position: -375px -500px;
+}
+    span[id="Sonic"] {
+    background-position: -500px -500px;
+}
+    span[id="King Dedede"] {
+    background-position: -625px -500px;
+}
+    span[id="Olimar"] {
+    background-position: -750px -500px;
+}
+    span[id="Lucario"] {
+    background-position: -875px -500px;
+}
+    span[id="R.O.B."] {
+    background-position: -1000px -500px;
+}
+    span[id="Toon Link"] {
+    background-position: 0 -625px;
+}
+    span[id="Wolf"] {
+    background-position: -125px -625px;
+}
+    span[id="Villager"] {
+    background-position: -250px -625px;
+}
+    span[id="Mega Man"] {
+    background-position: -375px -625px;
+}
+    span[id="Wii Fit Trainer"] {
+    background-position: -500px -625px;
+}
+    span[id="Rosalina"] {
+    background-position: -625px -625px;
+}
+    span[id="Little Mac"] {
+    background-position: -750px -625px;
+}
+    span[id="Greninja"] {
+    background-position: -875px -625px;
+}
+    span[id="Mii Fighter"] {
+    background-position: -1000px -625px;
+}
+    span[id="Palutena"] {
+    background-position: 0 -750px;
+}
+    span[id="PAC-MAN"] {
+    background-position: -125px -750px;
+}
+    span[id="Robin"] {
+    background-position: -250px -750px;
+}
+    span[id="Shulk"] {
+    background-position: -375px -750px;
+}
+    span[id="Bowser Jr."] {
+    background-position: -500px -750px;
+}
+    span[id="Duck Hunt"] {
+    background-position: -625px -750px;
+}
+    span[id="Ryu"] {
+    background-position: -750px -750px;
+}
+    span[id="Ken"] {
+    background-position: -875px -750px;
+}
+    span[id="Cloud"] {
+    background-position: -1000px -750px;
+}
+    span[id="Corrin"] {
+    background-position: 0 -875px;
+}
+    span[id="Bayonetta"] {
+    background-position: -125px -875px;
+}
+    span[id="Inkling"] {
+    background-position: -250px -875px;
+}
+    span[id="Ridley"] {
+    background-position: -375px -875px;
+}
+    span[id="Simon"] {
+    background-position: -500px -875px;
+}
+    span[id="Richter"] {
+    background-position: -625px -875px;
+}
+    span[id="King K. Rool"] {
+    background-position: -750px -875px;
+}
+    span[id="Isabelle"] {
+    background-position: -875px -875px;
+}
+    span[id="Incineroar"] {
+    background-position: -1000px -875px;
+}
+    span[id="Piranha Plant"] {
+    background-position: 0 -1000px;
+}
+    span[id="Joker"] {
+    background-position: -125px -1000px;
+}
+    span[id="The Hero"] {
+    background-position: -250px -1000px;
+}
+    span[id="Banjo and Kazooie"] {
+    background-position: -375px -1000px;
+}
+    span[id="Terry Bogard"] {
+    background-position: -500px -1000px;
+}
+    span[id="Byleth"] {
+    background-position: -625px -1000px;
+}
+    

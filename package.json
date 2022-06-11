@@ -16,7 +16,9 @@
         "lint:ts": "eslint . --ext .ts,.tsx",
         "lint:scss": "stylelint --fix 'src/**/*.scss'",
         "format:fix": "prettier --write **/*.{ts,tsx}",
-        "prepare": "husky install"
+        "prepare": "husky install",
+        "run-script": "ts-node --project tsconfig.json",
+        "characters": "yarn run run-script scripts/characters.ts"
     },
     "dependencies": {
         "@chakra-ui/icons": "2.0.2",

@@ -1,4 +1,4 @@
-import { Avatar, Box, Flex, Heading, HStack, Stat, StatArrow, StatHelpText, StatLabel, StatNumber, Text } from "@chakra-ui/react";
+import { Box, Flex, Heading, HStack, Stat, StatArrow, StatHelpText, StatLabel, StatNumber, Text } from "@chakra-ui/react";
 import React from "react";
 
 export const CharacterCard = ({ name }: { name: string }) => {
@@ -10,7 +10,7 @@ export const CharacterCard = ({ name }: { name: string }) => {
                         <Heading as="h3" size={"lg"}>
                             #1
                         </Heading>
-                        <Avatar id={name} name={name} />
+                        <span id={name} className="character-avatar"></span>
                         <Text fontSize="2xl" fontWeight="extrabold">
                             {name}
                         </Text>
