@@ -6,58 +6,38 @@
         "npm": "8.1.2",
         "node": "17.1.0"
     },
+    "workspaces": [
+        "packages/*"
+    ],
     "scripts": {
-        "start": "vite",
-        "build": "tsc && vite build",
-        "preview": "vite preview",
-        "test": "jest",
-        "lint": "yarn run lint:ts",
-        "lint:fix": "yarn run lint -- --fix",
-        "lint:ts": "eslint . --ext .ts,.tsx",
-        "lint:scss": "stylelint --fix 'src/**/*.scss'",
-        "format:fix": "prettier --write **/*.{ts,tsx}",
-        "prepare": "husky install",
-        "run-script": "ts-node --project tsconfig.json",
-        "characters": "yarn run run-script scripts/characters.ts"
-    },
-    "dependencies": {
-        "@chakra-ui/icons": "2.0.2",
-        "@chakra-ui/react": "2.2.1",
-        "@emotion/react": "^11",
-        "@emotion/styled": "^11",
-        "@reduxjs/toolkit": "1.8.2",
-        "framer-motion": "^6",
-        "react": "18.1.0",
-        "react-dom": "18.1.0",
-        "react-redux": "8.0.2"
+        "client": "yarn workspace client start",
+        "server": "yarn workspace server start",
+        "client:test": "yarn workspace client test",
+        "client:lint": "yarn workspace client lint",
+        "start": "concurrently --kill-others-on-fail \"yarn server\" \"yarn client\"",
+        "test": "yarn run client:test",
+        "lint": "yarn run client:lint",
+        "prepare": "husky install"
     },
     "devDependencies": {
-        "@types/jest": "28.1.0",
-        "@types/react": "17.0.45",
-        "@types/react-dom": "18.0.5",
-        "@types/stylelint": "14.0.0",
-        "@typescript-eslint/eslint-plugin": "5.27.0",
-        "@typescript-eslint/parser": "5.27.0",
-        "@vitejs/plugin-react": "1.3.0",
-        "eslint": "8.16.0",
+        "@types/jest": "28.1.1",
+        "@typescript-eslint/eslint-plugin": "5.27.1",
+        "@typescript-eslint/parser": "5.27.1",
+        "eslint": "8.17.0",
         "eslint-plugin-import": "2.26.0",
         "eslint-plugin-prettier": "4.0.0",
         "eslint-plugin-react": "7.30.0",
         "eslint-plugin-react-hooks": "4.5.0",
         "eslint-plugin-unused-imports": "2.0.0",
         "husky": "8.0.1",
-        "jest": "28.1.0",
-        "jest-environment-jsdom": "28.1.0",
+        "jest": "28.1.1",
+        "jest-environment-jsdom": "28.1.1",
         "prettier": "2.6.2",
-        "sass": "1.52.2",
-        "stylelint": "14.8.5",
-        "stylelint-config-prettier": "9.0.3",
-        "stylelint-config-standard": "25.0.0",
-        "stylelint-config-standard-scss": "4.0.0",
-        "stylelint-prettier": "2.0.0",
         "ts-jest": "28.0.4",
-        "ts-node": "10.8.0",
-        "typescript": "4.6.3",
-        "vite": "2.9.9"
+        "ts-node": "10.8.1",
+        "typescript": "4.7.3"
+    },
+    "dependencies": {
+        "concurrently": "7.2.1"
     }
 }
