@@ -1,7 +1,9 @@
 import App from "./pages/App";
+import { store } from "./store";
 import React from "react";
 import * as ReactDOM from "react-dom/client";
 import { ChakraProvider, extendTheme } from "@chakra-ui/react";
+import { Provider } from "react-redux";
 
 const rootElement = document.getElementById("root");
 
@@ -22,7 +24,9 @@ const theme = extendTheme({
 ReactDOM.createRoot(rootElement).render(
     <React.StrictMode>
         <ChakraProvider theme={theme}>
-            <App />
+            <Provider store={store}>
+                <App />
+            </Provider>
         </ChakraProvider>
     </React.StrictMode>
 );
