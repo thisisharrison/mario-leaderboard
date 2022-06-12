@@ -17,15 +17,12 @@ export const paginationSlice = createSlice({
     initialState,
     reducers: {
         increment: (state) => {
-            state.pageIndex += 1;
+            state.pageIndex += PAGE_SIZE;
         },
         decrement: (state) => {
-            state.pageIndex -= 1;
+            state.pageIndex -= PAGE_SIZE;
         },
-        reset: (state) => {
-            state.pageIndex = 0;
-        },
-        last: (state, action: PayloadAction<number>) => {
+        gotoPage: (state, action: PayloadAction<number>) => {
             state.pageIndex = action.payload;
         },
     },

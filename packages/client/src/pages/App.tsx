@@ -16,7 +16,6 @@ function App() {
         socket.connect();
 
         socket.on("update", (message) => {
-            console.log("first");
             dispatch(rankingSlice.actions.receiveNewRanking(message));
         });
 

@@ -1,23 +1,32 @@
+import { PAGE_SIZE, paginationSlice } from "../../slice/pagination";
 import { Text, Flex, IconButton, Tooltip } from "@chakra-ui/react";
 import { ArrowRightIcon, ArrowLeftIcon, ChevronRightIcon, ChevronLeftIcon } from "@chakra-ui/icons";
 import React from "react";
-import type { MouseEvent } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import type { RootState } from "../../store";
 
 export const Pagination = () => {
+    const dispatch = useDispatch();
+    const pageIndex = useSelector((state: RootState) => state.pagination.pageIndex);
+    const pageCount = useSelector((state: RootState) => Math.floor(state.ranking.curr.length / PAGE_SIZE));
+    const totalCharacters = useSelector((state: RootState) => state.ranking.curr.length);
+
+    const canPreviousPage = pageIndex !== 0;
+
+    const canNextPage = pageIndex + PAGE_SIZE < totalCharacters;
+
+    const previousPage = () => {
+        dispatch(paginationSlice.actions.decrement());
+    };
+
+    const nextPage = () => {
+        dispatch(paginationSlice.actions.increment());
+    };
+
     const gotoPage = (page: number) => {
-        console.log(page);
+        dispatch(paginationSlice.actions.gotoPage(page));
     };
-    const previousPage = (event: MouseEvent<HTMLButtonElement>) => {
-        console.log(event);
-    };
-    const canPreviousPage = true;
-    const canNextPage = true;
-    const pageIndex = 0;
-    const pageOptions = [10];
-    const nextPage = (event: MouseEvent<HTMLButtonElement>) => {
-        console.log(event);
-    };
-    const pageCount = 0;
+
     return (
         <Flex justifyContent="space-between" m={4} alignItems="center">
             <Flex>
@@ -32,11 +41,11 @@ export const Pagination = () => {
                 <Text flexShrink="0" mr={8}>
                     Page{" "}
                     <Text fontWeight="bold" as="span">
-                        {pageIndex + 1}
+                        {pageIndex / PAGE_SIZE + 1}
                     </Text>{" "}
                     of{" "}
                     <Text fontWeight="bold" as="span">
-                        {pageOptions.length}
+                        {Math.floor(totalCharacters / PAGE_SIZE) + 1}
                     </Text>
                 </Text>
             </Flex>

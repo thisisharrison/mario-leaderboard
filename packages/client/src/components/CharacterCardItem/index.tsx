@@ -10,7 +10,7 @@ export const CharacterCard = ({ name, score, rank, delta }: CharacterInfo & { ra
                 <HStack justifyContent="space-between">
                     <Flex gap={2} alignItems="center">
                         <Heading as="h3" size={"lg"}>
-                            #{rank + 1}
+                            #{rank}
                         </Heading>
                         <span id={name} className="character-avatar"></span>
                         <Text fontSize="2xl" fontWeight="extrabold">
