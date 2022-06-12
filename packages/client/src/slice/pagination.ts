@@ -2,9 +2,12 @@ import { createSelector, createSlice } from "@reduxjs/toolkit";
 import type { RootState } from "../store";
 import type { PayloadAction } from "@reduxjs/toolkit";
 
+export const PageSizeOptions = [10, 15, 20, 25] as const;
+export type PageSizeType = typeof PageSizeOptions[number];
+
 export interface PaginationState {
     pageIndex: number;
-    pageSize: number;
+    pageSize: PageSizeType;
 }
 
 const initialState: PaginationState = {
@@ -24,6 +27,9 @@ export const paginationSlice = createSlice({
         },
         gotoPage: (state, action: PayloadAction<number>) => {
             state.pageIndex = action.payload * state.pageSize;
+        },
+        updatePageSize: (state, action: PayloadAction<PageSizeType>) => {
+            state.pageSize = action.payload;
         },
     },
 });

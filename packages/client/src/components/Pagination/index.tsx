@@ -1,32 +1,12 @@
-import { paginationSlice } from "../../slice/pagination";
-import { Text, Flex, IconButton, Tooltip } from "@chakra-ui/react";
+import { PageSizeOptions } from "../../slice/pagination";
+import { usePagination } from "../../hook/usePagination";
+import { Text, Flex, IconButton, Tooltip, Select } from "@chakra-ui/react";
 import { ArrowRightIcon, ArrowLeftIcon, ChevronRightIcon, ChevronLeftIcon } from "@chakra-ui/icons";
 import React from "react";
-import { useDispatch, useSelector } from "react-redux";
-import type { RootState } from "../../store";
+import type { PageSizeType } from "../../slice/pagination";
 
 export const Pagination = () => {
-    const dispatch = useDispatch();
-    const pageIndex = useSelector((state: RootState) => state.pagination.pageIndex);
-    const pageSize = useSelector((state: RootState) => state.pagination.pageSize);
-    const pageCount = useSelector((state: RootState) => Math.floor(state.ranking.curr.length / pageSize));
-    const totalCharacters = useSelector((state: RootState) => state.ranking.curr.length);
-
-    const canPreviousPage = pageIndex !== 0;
-
-    const canNextPage = pageIndex + pageSize < totalCharacters;
-
-    const previousPage = () => {
-        dispatch(paginationSlice.actions.decrement());
-    };
-
-    const nextPage = () => {
-        dispatch(paginationSlice.actions.increment());
-    };
-
-    const gotoPage = (page: number) => {
-        dispatch(paginationSlice.actions.gotoPage(page));
-    };
+    const { canPreviousPage, previousPage, pageIndex, pageSize, totalCharacters, setPgaeSize, nextPage, canNextPage, gotoPage, pageCount } = usePagination();
 
     return (
         <Flex justifyContent="space-between" m={4} alignItems="center">
@@ -42,7 +22,7 @@ export const Pagination = () => {
                 <Text flexShrink="0" mr={8}>
                     Page{" "}
                     <Text fontWeight="bold" as="span">
-                        {pageIndex / pageSize + 1}
+                        {Math.floor(pageIndex / pageSize + 1)}
                     </Text>{" "}
                     of{" "}
                     <Text fontWeight="bold" as="span">
@@ -50,6 +30,19 @@ export const Pagination = () => {
                     </Text>
                 </Text>
             </Flex>
+            <Select
+                w={32}
+                value={pageSize}
+                onChange={(e) => {
+                    setPgaeSize(Number(e.target.value) as PageSizeType);
+                }}
+            >
+                {PageSizeOptions.map((pageSize) => (
+                    <option key={pageSize} value={pageSize}>
+                        Show {pageSize}
+                    </option>
+                ))}
+            </Select>
             <Flex>
                 <Tooltip label="Next Page">
                     <IconButton onClick={nextPage} isDisabled={!canNextPage} icon={<ChevronRightIcon h={6} w={6} />} aria-label={""} />
