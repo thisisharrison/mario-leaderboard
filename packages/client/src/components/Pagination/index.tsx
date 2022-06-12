@@ -1,4 +1,4 @@
-import { PAGE_SIZE, paginationSlice } from "../../slice/pagination";
+import { paginationSlice } from "../../slice/pagination";
 import { Text, Flex, IconButton, Tooltip } from "@chakra-ui/react";
 import { ArrowRightIcon, ArrowLeftIcon, ChevronRightIcon, ChevronLeftIcon } from "@chakra-ui/icons";
 import React from "react";
@@ -8,12 +8,13 @@ import type { RootState } from "../../store";
 export const Pagination = () => {
     const dispatch = useDispatch();
     const pageIndex = useSelector((state: RootState) => state.pagination.pageIndex);
-    const pageCount = useSelector((state: RootState) => Math.floor(state.ranking.curr.length / PAGE_SIZE));
+    const pageSize = useSelector((state: RootState) => state.pagination.pageSize);
+    const pageCount = useSelector((state: RootState) => Math.floor(state.ranking.curr.length / pageSize));
     const totalCharacters = useSelector((state: RootState) => state.ranking.curr.length);
 
     const canPreviousPage = pageIndex !== 0;
 
-    const canNextPage = pageIndex + PAGE_SIZE < totalCharacters;
+    const canNextPage = pageIndex + pageSize < totalCharacters;
 
     const previousPage = () => {
         dispatch(paginationSlice.actions.decrement());
@@ -41,11 +42,11 @@ export const Pagination = () => {
                 <Text flexShrink="0" mr={8}>
                     Page{" "}
                     <Text fontWeight="bold" as="span">
-                        {pageIndex / PAGE_SIZE + 1}
+                        {pageIndex / pageSize + 1}
                     </Text>{" "}
                     of{" "}
                     <Text fontWeight="bold" as="span">
-                        {Math.floor(totalCharacters / PAGE_SIZE) + 1}
+                        {Math.floor(totalCharacters / pageSize) + 1}
                     </Text>
                 </Text>
             </Flex>
@@ -54,7 +55,7 @@ export const Pagination = () => {
                     <IconButton onClick={nextPage} isDisabled={!canNextPage} icon={<ChevronRightIcon h={6} w={6} />} aria-label={""} />
                 </Tooltip>
                 <Tooltip label="Last Page">
-                    <IconButton onClick={() => gotoPage(pageCount - 1)} isDisabled={!canNextPage} icon={<ArrowRightIcon h={3} w={3} />} ml={4} aria-label={""} />
+                    <IconButton onClick={() => gotoPage(pageCount)} isDisabled={!canNextPage} icon={<ArrowRightIcon h={3} w={3} />} ml={4} aria-label={""} />
                 </Tooltip>
             </Flex>
         </Flex>

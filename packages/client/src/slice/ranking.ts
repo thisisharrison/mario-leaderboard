@@ -1,4 +1,3 @@
-import { PAGE_SIZE } from "./pagination";
 import { createSelector, createSlice } from "@reduxjs/toolkit";
 import type { RootState } from "../store";
 import type { PayloadAction } from "@reduxjs/toolkit";
@@ -31,8 +30,8 @@ export const rankingSlice = createSlice({
 });
 
 export const selectCurrentPaginatedRanking = createSelector(
-    (state: RootState) => ({ ranking: state.ranking.curr, index: state.pagination.pageIndex }),
-    ({ ranking, index }) => ranking.slice(index, index + PAGE_SIZE > ranking.length ? undefined : index + PAGE_SIZE)
+    (state: RootState) => ({ ranking: state.ranking.curr, index: state.pagination.pageIndex, pageSize: state.pagination.pageSize }),
+    ({ ranking, index, pageSize }) => ranking.slice(index, index + pageSize > ranking.length ? undefined : index + pageSize)
 );
 
 export const selectPreviousPaginatedRanking = createSelector(
