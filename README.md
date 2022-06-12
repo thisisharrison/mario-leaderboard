@@ -1,5 +1,7 @@
 # Super Smash Bros. Leaderboard
 
+![Demo](./images/leaderboard.gif)
+
 ---
 
 ## How to run?
