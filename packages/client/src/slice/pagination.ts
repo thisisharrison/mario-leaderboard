@@ -23,7 +23,7 @@ export const paginationSlice = createSlice({
             state.pageIndex += state.pageSize;
         },
         decrement: (state) => {
-            state.pageIndex -= state.pageSize;
+            state.pageIndex = Math.max(state.pageIndex - state.pageSize, 0);
         },
         gotoPage: (state, action: PayloadAction<number>) => {
             state.pageIndex = action.payload * state.pageSize;
@@ -35,6 +35,6 @@ export const paginationSlice = createSlice({
 });
 
 export const selectPagination = createSelector(
-    (state: RootState) => ({ ranking: state.ranking.curr, index: state.pagination.pageIndex, pageSize: state.pagination.pageSize }),
+    ({ ranking, pagination }: RootState) => ({ ranking: ranking.curr, index: pagination.pageIndex, pageSize: pagination.pageSize }),
     ({ ranking, index, pageSize }) => ({ pageOptions: Math.floor(ranking.length / pageSize), pageIndex: index })
 );

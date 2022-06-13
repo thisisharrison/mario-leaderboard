@@ -30,11 +30,11 @@ export const rankingSlice = createSlice({
 });
 
 export const selectCurrentPaginatedRanking = createSelector(
-    (state: RootState) => ({ ranking: state.ranking.curr, index: state.pagination.pageIndex, pageSize: state.pagination.pageSize }),
+    ({ ranking, pagination }: RootState) => ({ ranking: ranking.curr, index: pagination.pageIndex, pageSize: pagination.pageSize }),
     ({ ranking, index, pageSize }) => ranking.slice(index, index + pageSize > ranking.length ? undefined : index + pageSize)
 );
 
 export const selectPreviousPaginatedRanking = createSelector(
-    (state: RootState) => ({ ranking: state.ranking.prev }),
+    ({ ranking }: RootState) => ({ ranking: ranking.prev }),
     ({ ranking }) => ranking.reduce<Record<string, number>>((acc, cur) => ({ ...acc, [cur.id]: cur.score }), {})
 );
