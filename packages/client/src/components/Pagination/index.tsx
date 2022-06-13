@@ -6,16 +6,16 @@ import React from "react";
 import type { PageSizeType } from "../../slice/pagination";
 
 export const Pagination = () => {
-    const { canPreviousPage, previousPage, pageIndex, pageSize, totalCharacters, setPgaeSize, nextPage, canNextPage, gotoPage, pageCount } = usePagination();
+    const { canPreviousPage, previousPage, pageIndex, pageSize, totalCharacters, setPageSize, nextPage, canNextPage, gotoPage, pageCount } = usePagination();
 
     return (
         <Flex justifyContent="space-between" m={4} alignItems="center">
             <Flex>
                 <Tooltip label="First Page">
-                    <IconButton onClick={() => gotoPage(0)} isDisabled={!canPreviousPage} icon={<ArrowLeftIcon h={3} w={3} />} mr={4} aria-label={""} />
+                    <IconButton onClick={() => gotoPage(0)} isDisabled={!canPreviousPage} icon={<ArrowLeftIcon h={3} w={3} color="gray.600" />} mr={4} aria-label={"First Page"} />
                 </Tooltip>
                 <Tooltip label="Previous Page">
-                    <IconButton onClick={previousPage} isDisabled={!canPreviousPage} icon={<ChevronLeftIcon h={6} w={6} />} aria-label={""} />
+                    <IconButton onClick={previousPage} isDisabled={!canPreviousPage} icon={<ChevronLeftIcon h={6} w={6} color="gray.600" />} aria-label={"Previous Page"} />
                 </Tooltip>
             </Flex>
             <Flex alignItems="center">
@@ -34,7 +34,7 @@ export const Pagination = () => {
                 w={32}
                 value={pageSize}
                 onChange={(e) => {
-                    setPgaeSize(Number(e.target.value) as PageSizeType);
+                    setPageSize(Number(e.target.value) as PageSizeType);
                 }}
             >
                 {PageSizeOptions.map((pageSize) => (
@@ -45,10 +45,10 @@ export const Pagination = () => {
             </Select>
             <Flex>
                 <Tooltip label="Next Page">
-                    <IconButton onClick={nextPage} isDisabled={!canNextPage} icon={<ChevronRightIcon h={6} w={6} />} aria-label={""} />
+                    <IconButton onClick={nextPage} isDisabled={!canNextPage} icon={<ChevronRightIcon h={6} w={6} color="gray.600" />} aria-label={"Next Page"} />
                 </Tooltip>
                 <Tooltip label="Last Page">
-                    <IconButton onClick={() => gotoPage(pageCount)} isDisabled={!canNextPage} icon={<ArrowRightIcon h={3} w={3} />} ml={4} aria-label={""} />
+                    <IconButton onClick={() => gotoPage(pageCount)} isDisabled={!canNextPage} icon={<ArrowRightIcon h={3} w={3} color="gray.600" />} ml={4} aria-label={"Last Page"} />
                 </Tooltip>
             </Flex>
         </Flex>

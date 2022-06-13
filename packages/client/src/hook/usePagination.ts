@@ -26,9 +26,9 @@ export const usePagination = () => {
         dispatch(paginationSlice.actions.gotoPage(page));
     };
 
-    const setPgaeSize = (pageSize: PageSizeType) => {
+    const setPageSize = (pageSize: PageSizeType) => {
         dispatch(paginationSlice.actions.updatePageSize(pageSize));
     };
 
-    return { canPreviousPage, previousPage, pageIndex, pageSize, totalCharacters, setPgaeSize, nextPage, canNextPage, gotoPage, pageCount };
+    return { canPreviousPage, previousPage, pageIndex, pageSize, totalCharacters, setPageSize, nextPage, canNextPage, gotoPage, pageCount };
 };
