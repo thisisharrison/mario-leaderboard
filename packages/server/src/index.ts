@@ -69,7 +69,7 @@ io.on("connection", (socket) => {
     const intervalId = setInterval(() => {
         console.info("socket update");
         socket.emit("update", generator());
-    }, 10000);
+    }, 3000);
 
     socket.on("disconnect", () => {
         console.info("socket disconnect");
