@@ -20,7 +20,7 @@ function App() {
         });
 
         return () => {
-            socket.disconnect();
+            socket.close();
         };
     }, [dispatch]);
 

@@ -21,11 +21,13 @@ const io = new Server(server, {
 });
 
 server.listen(process.env.PORT || 8999, () => {
-    console.log("Server started");
+    console.info("Server started");
 });
 
 function rankingGenerator(): () => CharacterInfo[] {
     let current: CharacterInfo[] = characters.map(({ name }) => ({ id: uuid(), name, score: Math.floor(Math.random() * 100) }));
+    let timestamp = new Date();
+
     return () => {
         current = current
             .map(({ score, ...rest }) => {
@@ -44,6 +46,11 @@ function rankingGenerator(): () => CharacterInfo[] {
                 };
             })
             .sort(({ score: scoreA }, { score: scoreB }) => scoreB - scoreA);
+
+        const now = new Date();
+        console.info(`Time passed: ${(now.getTime() - timestamp.getTime()) / 1000}`);
+        timestamp = now;
+
         return current;
     };
 }
@@ -57,10 +64,22 @@ function randomDelta() {
 export const generator = rankingGenerator();
 
 io.on("connection", (socket) => {
-    socket.broadcast.emit("update", generator());
+    socket.emit("update", generator());
 
-    setInterval(() => {
-        console.log("update");
-        socket.broadcast.emit("update", generator());
+    const intervalId = setInterval(() => {
+        console.info("socket update");
+        socket.emit("update", generator());
     }, 10000);
+
+    socket.on("disconnect", () => {
+        console.info("socket disconnect");
+        clearInterval(intervalId);
+        io.disconnectSockets();
+    });
+
+    socket.on("close", () => {
+        console.info("socket close");
+        clearInterval(intervalId);
+        io.close();
+    });
 });
